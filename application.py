@@ -1,22 +1,17 @@
-#python3, flask, text-to-speach, telegram-bot-api, simple responsive bot
-from flask import Flask, render_template, session
+#python3, text-to-speach, telegram-bot-api, simple responsive bot
 from dotenv import load_dotenv   #for python-dotenv method
+import requests, json, os, threading, pyttsx3
 
-import requests
-import json
-import os 
 load_dotenv()                    #for python-dotenv method
-
-app = Flask(__name__)
-app.secret_key = "my-flask-application-telegram-bot"
 
 YOURAPIKEY = os.environ.get('YOURAPIKEY')
 
 URL = f"https://api.telegram.org/bot{YOURAPIKEY}/"
 
-@app.route("/")
+session = {}
 
 def index():
+    
     response = requests.get(URL + "getUpdates")
     get_updates = response.json()  
 
@@ -35,6 +30,8 @@ def index():
             for update in results:
                 update_id = update['update_id']
                 if(update_id > session['last_update_id']):
+                    print("new update")
+
                     message         = update['message']
                     chat_id         = message['chat']['id']
                     text            = message['text']
@@ -57,12 +54,19 @@ def index():
                     response = requests.get(f'{URL}sendMessage?chat_id={chat_id}&text={answer}&parse_mode=HTML')
                     print(response.json())
                     session['last_update_id'] = update_id
-    return render_template("index.html", get_updates=get_updates)
+    return 0
 
-#for text-to-speach
+
+def runUpdate():
+  threading.Timer(1.0, runUpdate).start()
+  index()
+
+runUpdate()
+
+
+#for text-to-speach google
 #from gtts import gTTS 
 #import os
-import pyttsx3
 
 #online version - good quality, stable if used free
 def generateVoiceGoogle(text):
