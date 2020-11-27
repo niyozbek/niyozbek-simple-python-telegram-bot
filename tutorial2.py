@@ -1,6 +1,6 @@
 #python3, text-to-speach, telegram-bot-api, simple responsive bot
 from dotenv import load_dotenv   #for python-dotenv method
-import requests, json, os, threading, pyttsx3
+import requests, json, os, threading, pyttsx3, time
 
 load_dotenv()                    #for python-dotenv method
 
@@ -27,6 +27,7 @@ class TelegramBot:
         # On linux make sure that 'espeak' and 'ffmpeg' are installed
         engine.save_to_file(text, 'voice.mp3')
         engine.runAndWait()
+        time.sleep(5)
     
     def __setLastUpdate(self):
         #not to send two responses
