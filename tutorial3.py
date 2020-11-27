@@ -74,6 +74,11 @@ class TelegramBot:
                         photo_url = f"https://api.telegram.org/file/bot{self.__YOURAPIKEY}/{file_path}"
                         #print(photo_url)
                         answer = f"You have just sent a photo: = {photo_url}"
+
+                        #downloads the image frorm telegram
+                        import urllib.request 
+                        urllib.request.urlretrieve(photo_url, "image.png")
+                        
                         #https://linuxhint.com/install-tesseract-ocr-linux/
 
                         #https://pypi.org/project/pytesseract/
@@ -83,19 +88,14 @@ class TelegramBot:
                             import Image
                         import pytesseract
 
-                        #downloads the image frorm telegram
-                        import urllib.request 
-                        urllib.request.urlretrieve(photo_url, "image.png")
-                        
                         # Simple image to string
                         ready_text = self.__letters(pytesseract.image_to_string(Image.open("image.png")))
 
                         response = requests.get(f'{self.__URL}sendMessage?chat_id={chat_id}&text={ready_text}&parse_mode=HTML')
-                       
-                        file_name = self.generateVoice(ready_text)
-                        
-                        files = {'voice': open(file_name, 'rb')}
+
                         #send a voice message
+                        file_name = self.generateVoice(ready_text)
+                        files = {'voice': open(file_name, 'rb')}
                         print(requests.post(f'{self.__URL}sendVoice?chat_id={chat_id}', files=files).json())
 
         return 0
