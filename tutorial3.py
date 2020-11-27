@@ -36,6 +36,7 @@ class TelegramBot:
         result = response['result']
         if len(result) > 0:
             self.__last_update_id = result[len(result)-1]['update_id']
+            
     def __letters(self, input):
         return "".join([x for x in input if x.isalpha() or x == ' '])
         #return ''.join(filter(str.isalpha, input))
@@ -86,7 +87,6 @@ class TelegramBot:
                         ready_text = self.__letters(pytesseract.image_to_string(Image.open("image.png")))
 
                         response = requests.get(f'{self.__URL}sendMessage?chat_id={chat_id}&text={ready_text}&parse_mode=HTML')
-                        
                        
                         file_name = self.generateVoice(ready_text)
                         
