@@ -65,6 +65,9 @@ class TelegramBot:
                     if("photo" in message):
                         #https://api.telegram.org/file/bot<token>/<file_path>
                         #getFile file_id
+                        
+                        #for add. info
+                        #https://core.telegram.org/bots/api
                         file_id = message['photo'][len(message['photo'])-1]['file_id']
                         getFile = requests.get(f'{self.__URL}getFile?file_id={file_id}').json()
                         file_path = getFile['result']['file_path']
@@ -80,10 +83,11 @@ class TelegramBot:
                             import Image
                         import pytesseract
 
-                        # Simple image to string
+                        #downloads the image frorm telegram
                         import urllib.request 
                         urllib.request.urlretrieve(photo_url, "image.png")
                         
+                        # Simple image to string
                         ready_text = self.__letters(pytesseract.image_to_string(Image.open("image.png")))
 
                         response = requests.get(f'{self.__URL}sendMessage?chat_id={chat_id}&text={ready_text}&parse_mode=HTML')
