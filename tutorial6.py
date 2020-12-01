@@ -6,7 +6,7 @@
 #https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks
 #https://python-telegram-bot.readthedocs.io/
 #https://seminar.io/2018/09/03/building-serverless-telegram-bot/
-#https://api.telegram.org/bot1428417948:AAHbvkQXIU0-qCAv6VZolme237sTDAYCy-I/deletewebhook
+#https://www.heroku.com/
 from flask import Flask, render_template, request
 
 import os
