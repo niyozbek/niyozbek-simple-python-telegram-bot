@@ -1,4 +1,7 @@
 # python wrapper to work with official telegram bot api
+#references
+#https://github.com/python-telegram-bot/python-telegram-bot
+#https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot
 from dotenv import load_dotenv
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 import os
