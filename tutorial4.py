@@ -106,7 +106,7 @@ class TelegramBot:
 
                     if("voice" in message):
                         print(message)
-                        
+
                         #https://api.telegram.org/file/bot<token>/<file_path>
                         #getFile file_id
                         
@@ -118,7 +118,7 @@ class TelegramBot:
                         file_path = getFile['result']['file_path']
                         voice_url = f"https://api.telegram.org/file/bot{self.__YOURAPIKEY}/{file_path}"
                         #print(voice_url)
-                        answer = f"You have just sent a voice: = {voice_url}"
+                        #answer = f"You have just sent a voice: = {voice_url}"
 
                         #downloads the image frorm telegram
                         import urllib.request 
