@@ -1,4 +1,7 @@
-# Steps to run the project: 
+## Tutorial videos are on my youtube channel!
+https://www.youtube.com/c/NiyozbekObidov/videos
+
+## Steps to run the project: 
 
 ## 1. python3
 ## 2. pip3 - package-management for python3
