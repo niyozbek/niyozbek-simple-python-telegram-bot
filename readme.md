@@ -1,7 +1,7 @@
 ## Tutorial videos are on my youtube channel!
 https://www.youtube.com/@YoungDev98/videos
 <br>
-[Playlist]<br>
+[Playlist - inspired by CS50 classes]<br>
 How to create PHP Telegram Bot, text commands - Tutorial 1<br>
 How to create Python Telegram Bot, text to speech - Tutorial 2 (in 10 minutes)<br>
 How to create Python Telegram Bot, image to text, OCR - Tutorial 3 (In 10 minutes)<br>
